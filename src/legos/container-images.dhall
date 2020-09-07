@@ -8,8 +8,6 @@ let overlayMerge
       λ(overlay : customization.Type) →
       λ(overrideVersion : Optional Text) →
       λ(overrideSha256 : Optional Text) →
-        let result = "foo"
-
         let overlayedRegistry =
               merge
                 { Some = λ(x : Text) → x, None = base.registry }
