@@ -1,0 +1,26 @@
+Frontend:
+    Deployment:
+        sourcegraph-frontend:
+            containers:
+                frontend: {}
+                jaeger-agent: {}
+    Ingress:
+        sourcegraph-frontend: {}
+    Role:
+        sourcegraph-frontend: {}
+    RoleBinding:
+        sourcegraph-frontend: {}
+    Service:
+        sourcegraph-frontend: {}
+        sourcegraph-frontend-internal: {}
+    ServiceAccount:
+        sourcegraph-frontend: {}
+Indexed-Search:
+    Service:
+        indexed-search: {}
+        indexed-search-indexer: {}
+    StatefulSet:
+        indexed-search:
+            containers:
+                zoekt-indexserver: {}
+                zoekt-webserver: {}
