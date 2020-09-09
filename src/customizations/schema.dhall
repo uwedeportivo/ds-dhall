@@ -6,7 +6,6 @@ let schema =
       { Type =
           { Shared :
               { namespace : Optional Text
-              , version : Optional Text
               , imageMods : container/image.Type
               }
           , Frontend :
@@ -20,14 +19,15 @@ let schema =
                   }
               }
           }
-      , default.Shared =
-        { namespace = None Text
-        , version = None Text
-        , imageMods = container/image.default
-        }
-      , Frontend.Deployment.sourcegraph-frontend.containers =
-        { frontend = customization/container.default
-        , jaeger-agent = customization/container.default
+      , default =
+        { Shared =
+          { namespace = None Text
+          , imageMods = container/image.default
+          }
+        , Frontend.Deployment.sourcegraph-frontend.containers =
+          { frontend = customization/container.default
+          , jaeger-agent = customization/container.default
+          }
         }
       }
 
