@@ -1,8 +1,15 @@
 let customization/container = ./container.dhall
 
+let container/image = ./image.dhall
+
 let schema =
       { Type =
-          { Frontend :
+          { Shared :
+              { namespace : Optional Text
+              , version : Optional Text
+              , imageMods : container/image.Type
+              }
+          , Frontend :
               { Deployment :
                   { sourcegraph-frontend :
                       { containers :
@@ -13,7 +20,12 @@ let schema =
                   }
               }
           }
-      , default.Frontend.Deployment.sourcegraph-frontend.containers =
+      , default.Shared =
+        { namespace = None Text
+        , version = None Text
+        , imageMods = container/image.default
+        }
+      , Frontend.Deployment.sourcegraph-frontend.containers =
         { frontend = customization/container.default
         , jaeger-agent = customization/container.default
         }

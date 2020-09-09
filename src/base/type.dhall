@@ -52,11 +52,14 @@
                                         { name : Text, value : Text }
                                     }
                                 , image :
-                                    { name : Text
-                                    , registry : Text
-                                    , sha256 : Text
-                                    , version : Text
-                                    }
+                                    < asText : Text
+                                    | asRecord :
+                                        { name : Text
+                                        , registry : Text
+                                        , sha256 : Text
+                                        , version : Text
+                                        }
+                                    >
                                 , livenessProbe :
                                     { httpGet :
                                         { path : Text
@@ -114,11 +117,14 @@
                                         }
                                     }
                                 , image :
-                                    { name : Text
-                                    , registry : Text
-                                    , sha256 : Text
-                                    , version : Text
-                                    }
+                                    < asText : Text
+                                    | asRecord :
+                                        { name : Text
+                                        , registry : Text
+                                        , sha256 : Text
+                                        , version : Text
+                                        }
+                                    >
                                 , name : Text
                                 , ports :
                                     List
@@ -360,11 +366,14 @@
                             { zoekt-indexserver :
                                 { env : Optional <>
                                 , image :
-                                    { name : Text
-                                    , registry : Text
-                                    , sha256 : Text
-                                    , version : Text
-                                    }
+                                    < asText : Text
+                                    | asRecord :
+                                        { name : Text
+                                        , registry : Text
+                                        , sha256 : Text
+                                        , version : Text
+                                        }
+                                    >
                                 , name : Text
                                 , ports :
                                     { index-http :
@@ -389,11 +398,14 @@
                             , zoekt-webserver :
                                 { env : Optional <>
                                 , image :
-                                    { name : Text
-                                    , registry : Text
-                                    , sha256 : Text
-                                    , version : Text
-                                    }
+                                    < asText : Text
+                                    | asRecord :
+                                        { name : Text
+                                        , registry : Text
+                                        , sha256 : Text
+                                        , version : Text
+                                        }
+                                    >
                                 , name : Text
                                 , ports :
                                     { http :
