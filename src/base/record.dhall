@@ -60,12 +60,20 @@
                   }
                 }
               , image =
-                { name = "sourcegraph/frontend"
-                , registry = "index.docker.io"
-                , sha256 =
-                    "776606b680d7ce4a5d37451831ef2414ab10414b5e945ed5f50fe768f898d23f"
-                , version = "3.19.2"
-                }
+                  < asRecord :
+                      { name : Text
+                      , registry : Text
+                      , sha256 : Text
+                      , version : Text
+                      }
+                  | asText : Text
+                  >.asRecord
+                    { name = "sourcegraph/frontend"
+                    , registry = "index.docker.io"
+                    , sha256 =
+                        "776606b680d7ce4a5d37451831ef2414ab10414b5e945ed5f50fe768f898d23f"
+                    , version = "3.19.2"
+                    }
               , livenessProbe =
                 { httpGet =
                   { path = "/healthz", port = "http", scheme = "HTTP" }
@@ -111,12 +119,20 @@
                   { apiVersion = "v1", fieldPath = "metadata.name" }
                 }
               , image =
-                { name = "sourcegraph/jaeger-agent"
-                , registry = "index.docker.io"
-                , sha256 =
-                    "e757094c04559780dba1ded3475ee5f0e4e5330aa6bbc8a7398e7277b0e450fe"
-                , version = "3.19.2"
-                }
+                  < asRecord :
+                      { name : Text
+                      , registry : Text
+                      , sha256 : Text
+                      , version : Text
+                      }
+                  | asText : Text
+                  >.asRecord
+                    { name = "sourcegraph/jaeger-agent"
+                    , registry = "index.docker.io"
+                    , sha256 =
+                        "e757094c04559780dba1ded3475ee5f0e4e5330aa6bbc8a7398e7277b0e450fe"
+                    , version = "3.19.2"
+                    }
               , name = "jaeger-agent"
               , ports =
                 [ { containerPort = 5775, protocol = "UDP" }
@@ -341,12 +357,20 @@
             { zoekt-indexserver =
               { env = None <>
               , image =
-                { name = "sourcegraph/search-indexer"
-                , registry = "index.docker.io"
-                , sha256 =
-                    "7ddeb4d06a89e086506f08d9a114186260c7fa6c242e59be8c28b505d506047a"
-                , version = "3.19.2"
-                }
+                  < asRecord :
+                      { name : Text
+                      , registry : Text
+                      , sha256 : Text
+                      , version : Text
+                      }
+                  | asText : Text
+                  >.asRecord
+                    { name = "sourcegraph/search-indexer"
+                    , registry = "index.docker.io"
+                    , sha256 =
+                        "7ddeb4d06a89e086506f08d9a114186260c7fa6c242e59be8c28b505d506047a"
+                    , version = "3.19.2"
+                    }
               , name = "zoekt-indexserver"
               , ports.index-http = { containerPort = 6072, name = "index-http" }
               , resources =
@@ -367,12 +391,20 @@
             , zoekt-webserver =
               { env = None <>
               , image =
-                { name = "sourcegraph/indexed-searcher"
-                , registry = "index.docker.io"
-                , sha256 =
-                    "d2e87635cf48c4c5d744962540751022013359bc00a9fb8e1ec2464cc6a0a2b8"
-                , version = "3.19.2"
-                }
+                  < asRecord :
+                      { name : Text
+                      , registry : Text
+                      , sha256 : Text
+                      , version : Text
+                      }
+                  | asText : Text
+                  >.asRecord
+                    { name = "sourcegraph/indexed-searcher"
+                    , registry = "index.docker.io"
+                    , sha256 =
+                        "d2e87635cf48c4c5d744962540751022013359bc00a9fb8e1ec2464cc6a0a2b8"
+                    , version = "3.19.2"
+                    }
               , name = "zoekt-webserver"
               , ports.http = { containerPort = 6070, name = "http" }
               , readinessProbe =
