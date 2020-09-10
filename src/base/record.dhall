@@ -11,6 +11,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "backend"
+      , namespace = None Text
       }
     , spec =
       { clusterIP = "None"
@@ -28,6 +29,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin-storage"
         }
       , name = "sourcegraph"
+      , namespace = None Text
       }
     , parameters.type = "pd-ssd"
     , provisioner = "kubernetes.io/gce-pd"
@@ -46,6 +48,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "cadvisor"
+      , namespace = None Text
       }
     , rules =
       [ { apiGroups = [ "policy" ]
@@ -67,6 +70,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "cadvisor"
+      , namespace = None Text
       }
     , roleRef =
       { apiGroup = "rbac.authorization.k8s.io"
@@ -90,6 +94,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "cadvisor"
+      , namespace = None Text
       }
     , spec =
       { selector.matchLabels.app = "cadvisor"
@@ -101,6 +106,7 @@
             , `sourcegraph.prometheus/scrape` = "true"
             }
           , labels = { app = "cadvisor", deploy = "sourcegraph" }
+          , namespace = None Text
           }
         , spec =
           { automountServiceAccountToken = False
@@ -178,6 +184,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "cadvisor"
+      , namespace = None Text
       }
     , spec =
       { allowedHostPaths =
@@ -206,6 +213,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "cadvisor"
+      , namespace = None Text
       }
     }
   }
@@ -222,6 +230,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "sourcegraph-frontend"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -233,8 +242,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels =
-          { app = "sourcegraph-frontend", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "sourcegraph-frontend", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { frontend =
@@ -387,6 +398,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "sourcegraph-frontend"
+      , namespace = None Text
       }
     , spec.rules =
       [ { http.paths =
@@ -409,6 +421,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "sourcegraph-frontend"
+      , namespace = None Text
       }
     , rules =
       [ { apiGroups = [ "" ]
@@ -428,6 +441,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "sourcegraph-frontend"
+      , namespace = None Text
       }
     , roleRef = { apiGroup = "", kind = "Role", name = "sourcegraph-frontend" }
     , subjects.sourcegraph-frontend =
@@ -449,6 +463,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "sourcegraph-frontend"
+        , namespace = None Text
         }
       , spec =
         { ports.http = { name = "http", port = 30080, targetPort = "http" }
@@ -467,6 +482,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "sourcegraph-frontend-internal"
+        , namespace = None Text
         }
       , spec =
         { ports.http-internal =
@@ -488,6 +504,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "sourcegraph-frontend"
+      , namespace = None Text
       }
     }
   }
@@ -503,6 +520,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "github-proxy"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -514,7 +532,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels = { app = "github-proxy", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "github-proxy", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { github-proxy =
@@ -616,6 +637,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "github-proxy"
+      , namespace = None Text
       }
     , spec =
       { ports.http = { name = "http", port = 80, targetPort = "http" }
@@ -643,6 +665,7 @@
         , type = "gitserver"
         }
       , name = "gitserver"
+      , namespace = None Text
       }
     , spec =
       { clusterIP = "None"
@@ -663,6 +686,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "gitserver"
+      , namespace = None Text
       }
     , spec =
       { replicas = 1
@@ -670,11 +694,14 @@
       , selector.matchLabels.app = "gitserver"
       , serviceName = "gitserver"
       , template =
-        { metadata.labels =
-          { app = "gitserver"
-          , deploy = "sourcegraph"
-          , group = "backend"
-          , type = "gitserver"
+        { metadata =
+          { labels =
+            { app = "gitserver"
+            , deploy = "sourcegraph"
+            , group = "backend"
+            , type = "gitserver"
+            }
+          , namespace = None Text
           }
         , spec =
           { containers =
@@ -773,7 +800,7 @@
       , volumeClaimTemplates =
         [ { apiVersion = "apps/v1"
           , kind = "PersistentVolumeClaim"
-          , metadata.name = "repos"
+          , metadata = { name = "repos", namespace = None Text }
           , spec =
             { accessModes = [ "ReadWriteOnce" ]
             , resources.requests =
@@ -815,6 +842,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "grafana"
+      , namespace = None Text
       }
     }
   , Service.grafana =
@@ -828,6 +856,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "grafana"
+      , namespace = None Text
       }
     , spec =
       { ports.http = { name = "http", port = 30070, targetPort = "http" }
@@ -847,6 +876,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "grafana"
+      , namespace = None Text
       }
     }
   , StatefulSet.grafana =
@@ -860,6 +890,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "grafana"
+      , namespace = None Text
       }
     , spec =
       { replicas = 1
@@ -867,7 +898,10 @@
       , selector.matchLabels.app = "grafana"
       , serviceName = "grafana"
       , template =
-        { metadata.labels = { app = "grafana", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "grafana", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers.grafana =
             { image =
@@ -921,7 +955,7 @@
       , volumeClaimTemplates =
         [ { apiVersion = "apps/v1"
           , kind = "PersistentVolumeClaim"
-          , metadata.name = "grafana-data"
+          , metadata = { name = "grafana-data", namespace = None Text }
           , spec =
             { accessModes = [ "ReadWriteOnce" ]
             , resources.requests =
@@ -955,6 +989,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "indexed-search"
+        , namespace = None Text
         }
       , spec =
         { clusterIP = "None"
@@ -980,6 +1015,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "indexed-search-indexer"
+        , namespace = None Text
         }
       , spec =
         { clusterIP = "None"
@@ -1000,6 +1036,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "indexed-search"
+      , namespace = None Text
       }
     , spec =
       { replicas = 1
@@ -1007,7 +1044,10 @@
       , selector.matchLabels.app = "indexed-search"
       , serviceName = "indexed-search"
       , template =
-        { metadata.labels = { app = "indexed-search", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "indexed-search", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { zoekt-indexserver =
@@ -1094,7 +1134,11 @@
       , volumeClaimTemplates =
         [ { apiVersion = "apps/v1"
           , kind = "PersistentVolumeClaim"
-          , metadata = { labels.deploy = "sourcegraph", name = "data" }
+          , metadata =
+            { labels.deploy = "sourcegraph"
+            , name = "data"
+            , namespace = None Text
+            }
           , spec =
             { accessModes = [ "ReadWriteOnce" ]
             , resources.requests =
@@ -1122,6 +1166,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "jaeger"
+      , namespace = None Text
       }
     , spec =
       { replicas = 1
@@ -1141,6 +1186,7 @@
             , `app.kubernetes.io/name` = "jaeger"
             , deploy = "sourcegraph"
             }
+          , namespace = None Text
           }
         , spec =
           { containers.jaeger =
@@ -1204,6 +1250,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "jaeger-collector"
+        , namespace = None Text
         }
       , spec =
         { ports =
@@ -1245,6 +1292,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "jaeger-query"
+        , namespace = None Text
         }
       , spec =
         { ports.query-http =
@@ -1967,6 +2015,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "pgsql-conf"
+      , namespace = None Text
       }
     }
   , Deployment.pgsql =
@@ -1980,6 +2029,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "pgsql"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -1988,8 +2038,11 @@
       , selector.matchLabels.app = "pgsql"
       , strategy.type = "Recreate"
       , template =
-        { metadata.labels =
-          { app = "pgsql", deploy = "sourcegraph", group = "backend" }
+        { metadata =
+          { labels =
+            { app = "pgsql", deploy = "sourcegraph", group = "backend" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { pgsql =
@@ -2116,6 +2169,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "pgsql"
+      , namespace = None Text
       }
     , spec =
       { accessModes = [ "ReadWriteOnce" ]
@@ -2139,6 +2193,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "pgsql"
+      , namespace = None Text
       }
     , spec =
       { ports.pgsql = { name = "pgsql", port = 5432, targetPort = "pgsql" }
@@ -2161,6 +2216,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "precise-code-intel-bundle-manager"
+        , namespace = None Text
         }
       , spec =
         { minReadySeconds = 10
@@ -2169,9 +2225,12 @@
         , selector.matchLabels.app = "precise-code-intel-bundle-manager"
         , strategy.type = "Recreate"
         , template =
-          { metadata.labels =
-            { app = "precise-code-intel-bundle-manager"
-            , deploy = "sourcegraph"
+          { metadata =
+            { labels =
+              { app = "precise-code-intel-bundle-manager"
+              , deploy = "sourcegraph"
+              }
+            , namespace = None Text
             }
           , spec =
             { containers.precise-code-intel-bundle-manager =
@@ -2254,6 +2313,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "precise-code-intel-worker"
+        , namespace = None Text
         }
       , spec =
         { minReadySeconds = 10
@@ -2265,8 +2325,11 @@
           , type = "RollingUpdate"
           }
         , template =
-          { metadata.labels =
-            { app = "precise-code-intel-worker", deploy = "sourcegraph" }
+          { metadata =
+            { labels =
+              { app = "precise-code-intel-worker", deploy = "sourcegraph" }
+            , namespace = None Text
+            }
           , spec =
             { containers.precise-code-intel-worker =
               { env =
@@ -2342,6 +2405,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "bundle-manager"
+      , namespace = None Text
       }
     , spec =
       { accessModes = [ "ReadWriteOnce" ]
@@ -2366,6 +2430,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "precise-code-intel-bundle-manager"
+        , namespace = None Text
         }
       , spec =
         { ports =
@@ -2391,6 +2456,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "precise-code-intel-worker"
+        , namespace = None Text
         }
       , spec =
         { ports =
@@ -2415,6 +2481,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     , rules =
       [ { apiGroups = Some [ "" ]
@@ -2453,6 +2520,7 @@
         , sourcegraph-resource-requires = "cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     , roleRef = { apiGroup = "", kind = "ClusterRole", name = "prometheus" }
     , subjects.prometheus =
@@ -2722,6 +2790,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     }
   , Deployment.prometheus =
@@ -2736,6 +2805,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -2744,7 +2814,10 @@
       , selector.matchLabels.app = "prometheus"
       , strategy.type = "Recreate"
       , template =
-        { metadata.labels = { app = "prometheus", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "prometheus", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers.prometheus =
             { image =
@@ -2817,6 +2890,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     , spec =
       { accessModes = [ "ReadWriteOnce" ]
@@ -2836,6 +2910,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     , spec =
       { ports.http = { name = "http", port = 30090, targetPort = "http" }
@@ -2855,6 +2930,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "prometheus"
+      , namespace = None Text
       }
     }
   }
@@ -2871,6 +2947,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "query-runner"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -2882,7 +2959,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels = { app = "query-runner", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "query-runner", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { jaeger-agent =
@@ -2984,6 +3064,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "query-runner"
+      , namespace = None Text
       }
     , spec =
       { ports.http = { name = "http", port = 80, targetPort = "http" }
@@ -3005,6 +3086,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "redis-cache"
+        , namespace = None Text
         }
       , spec =
         { minReadySeconds = 10
@@ -3013,7 +3095,10 @@
         , selector.matchLabels.app = "redis-cache"
         , strategy.type = "Recreate"
         , template =
-          { metadata.labels = { app = "redis-cache", deploy = "sourcegraph" }
+          { metadata =
+            { labels = { app = "redis-cache", deploy = "sourcegraph" }
+            , namespace = None Text
+            }
           , spec =
             { containers =
               { redis-cache =
@@ -3109,6 +3194,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "redis-store"
+        , namespace = None Text
         }
       , spec =
         { minReadySeconds = 10
@@ -3117,7 +3203,10 @@
         , selector.matchLabels.app = "redis-store"
         , strategy.type = "Recreate"
         , template =
-          { metadata.labels = { app = "redis-store", deploy = "sourcegraph" }
+          { metadata =
+            { labels = { app = "redis-store", deploy = "sourcegraph" }
+            , namespace = None Text
+            }
           , spec =
             { containers =
               { redis-exporter =
@@ -3213,6 +3302,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "redis-cache"
+        , namespace = None Text
         }
       , spec =
         { accessModes = [ "ReadWriteOnce" ]
@@ -3231,6 +3321,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "redis-store"
+        , namespace = None Text
         }
       , spec =
         { accessModes = [ "ReadWriteOnce" ]
@@ -3256,6 +3347,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "redis-cache"
+        , namespace = None Text
         }
       , spec =
         { ports.redis = { name = "redis", port = 6379, targetPort = "redis" }
@@ -3278,6 +3370,7 @@
           , sourcegraph-resource-requires = "no-cluster-admin"
           }
         , name = "redis-store"
+        , namespace = None Text
         }
       , spec =
         { ports.redis = { name = "redis", port = 6379, targetPort = "redis" }
@@ -3300,6 +3393,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "repo-updater"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -3311,7 +3405,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels = { app = "repo-updater", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "repo-updater", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { jaeger-agent =
@@ -3423,6 +3520,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "repo-updater"
+      , namespace = None Text
       }
     , spec =
       { ports.http = { name = "http", port = 3182, targetPort = "http" }
@@ -3443,6 +3541,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "searcher"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -3454,7 +3553,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels = { app = "searcher", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "searcher", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { jaeger-agent =
@@ -3578,6 +3680,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "searcher"
+      , namespace = None Text
       }
     , spec =
       { ports =
@@ -3601,6 +3704,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "symbols"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -3612,7 +3716,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels = { app = "symbols", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "symbols", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers =
             { jaeger-agent =
@@ -3741,6 +3848,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "symbols"
+      , namespace = None Text
       }
     , spec =
       { ports =
@@ -3764,6 +3872,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "syntect-server"
+      , namespace = None Text
       }
     , spec =
       { minReadySeconds = 10
@@ -3775,7 +3884,10 @@
         , type = "RollingUpdate"
         }
       , template =
-        { metadata.labels = { app = "syntect-server", deploy = "sourcegraph" }
+        { metadata =
+          { labels = { app = "syntect-server", deploy = "sourcegraph" }
+          , namespace = None Text
+          }
         , spec =
           { containers.syntect-server =
             { env = None <>
@@ -3832,6 +3944,7 @@
         , sourcegraph-resource-requires = "no-cluster-admin"
         }
       , name = "syntect-server"
+      , namespace = None Text
       }
     , spec =
       { ports.http = { name = "http", port = 9238, targetPort = "http" }
