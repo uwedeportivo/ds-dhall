@@ -8,7 +8,10 @@ let Configuration =
         { memory = None Text, cpu = None Text, ephemeralStorage = None Text }
       }
 
-let overlayMerge
+let ResourcesType =
+      { requests : Configuration.Type, limits : Configuration.Type }
+
+let mergeResources
     : Configuration.Type → Configuration.Type → Configuration.Type
     = λ(base : Configuration.Type) →
       λ(overlay : Configuration.Type) →
@@ -33,10 +36,20 @@ let overlayMerge
 
         in  result
 
+let overlayMerge
+    : ResourcesType → ResourcesType → ResourcesType
+    = λ(base : ResourcesType) →
+      λ(overlay : ResourcesType) →
+        let finalLimits = mergeResources base.limits overlay.limits
+
+        let finalRequests = mergeResources base.requests overlay.requests
+
+        in  { requests = finalRequests, limits = finalLimits }
+
 let tests =
       { t1 =
             assert
-          :   overlayMerge
+          :   mergeResources
                 Configuration::{ memory = Some "20Gi", cpu = Some "2" }
                 Configuration::{
                 , ephemeralStorage = Some "100MB"
@@ -49,17 +62,18 @@ let tests =
               }
       , t2 =
             assert
-          :   overlayMerge
+          :   mergeResources
                 Configuration::{ cpu = Some "500m", memory = Some "200MB" }
                 Configuration::{ cpu = Some "3" }
             ≡ Configuration::{ cpu = Some "3", memory = Some "200MB" }
       }
 
 let resources =
-      { Type = { limits : Configuration.Type, requests : Configuration.Type }
+      { Type = ResourcesType
       , default =
         { limits = Configuration.default, requests = Configuration.default }
       , Configuration
+      , mergeResources
       , overlayMerge
       }
 
