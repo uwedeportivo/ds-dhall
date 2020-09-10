@@ -10,7 +10,6 @@ let applyDeploymentResources = ./apply-deployment-resources.dhall
 
 let applyStatefulSetResources = ./apply-statefulset-resources.dhall
 
-
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
