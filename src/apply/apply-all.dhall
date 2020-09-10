@@ -10,6 +10,8 @@ let applyDeploymentResources = ./apply-deployment-resources.dhall
 
 let applyStatefulSetResources = ./apply-statefulset-resources.dhall
 
+let applyNamespace = ./apply-namespace.dhall
+
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
@@ -23,6 +25,8 @@ let applyAll
         let r = applyDeploymentResources r overlay
 
         let r = applyStatefulSetResources r overlay
+
+        let r = applyNamespace r overlay
 
         in  r
 

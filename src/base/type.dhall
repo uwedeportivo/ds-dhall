@@ -11,6 +11,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { clusterIP : Text
@@ -31,6 +32,7 @@
                 { labels :
                     { deploy : Text, sourcegraph-resource-requires : Text }
                 , name : Text
+                , namespace : Optional Text
                 }
             , parameters : { type : Text }
             , provisioner : Text
@@ -51,6 +53,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , rules :
                 List
@@ -74,6 +77,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , roleRef : { apiGroup : Text, kind : Text, name : Text }
             , subjects :
@@ -95,6 +99,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { selector : { matchLabels : { app : Text } }
@@ -106,6 +111,7 @@
                             , `sourcegraph.prometheus/scrape` : Text
                             }
                         , labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
                         }
                     , spec :
                         { automountServiceAccountToken : Bool
@@ -199,6 +205,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { allowedHostPaths : List { pathPrefix : Text }
@@ -223,6 +230,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -240,6 +248,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -252,7 +261,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { frontend :
@@ -399,6 +411,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { rules :
@@ -429,6 +442,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , rules :
                 List
@@ -450,6 +464,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , roleRef : { apiGroup : Text, kind : Text, name : Text }
             , subjects : { sourcegraph-frontend : { kind : Text, name : Text } }
@@ -471,6 +486,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -491,6 +507,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -515,6 +532,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -532,6 +550,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -544,7 +563,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { github-proxy :
@@ -641,6 +663,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -671,6 +694,7 @@
                     , type : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { clusterIP : Text
@@ -695,6 +719,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { replicas : Natural
@@ -709,6 +734,7 @@
                             , group : Text
                             , type : Text
                             }
+                        , namespace : Optional Text
                         }
                     , spec :
                         { containers :
@@ -802,7 +828,7 @@
                     List
                       { apiVersion : Text
                       , kind : Text
-                      , metadata : { name : Text }
+                      , metadata : { name : Text, namespace : Optional Text }
                       , spec :
                           { accessModes : List Text
                           , resources :
@@ -832,6 +858,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -847,6 +874,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -870,6 +898,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -885,6 +914,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { replicas : Natural
@@ -892,7 +922,10 @@
                 , selector : { matchLabels : { app : Text } }
                 , serviceName : Text
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { grafana :
@@ -946,7 +979,7 @@
                     List
                       { apiVersion : Text
                       , kind : Text
-                      , metadata : { name : Text }
+                      , metadata : { name : Text, namespace : Optional Text }
                       , spec :
                           { accessModes : List Text
                           , resources :
@@ -981,6 +1014,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { clusterIP : Text
@@ -1005,6 +1039,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { clusterIP : Text
@@ -1026,6 +1061,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { replicas : Natural
@@ -1033,7 +1069,10 @@
                 , selector : { matchLabels : { app : Text } }
                 , serviceName : Text
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { zoekt-indexserver :
@@ -1120,7 +1159,11 @@
                     List
                       { apiVersion : Text
                       , kind : Text
-                      , metadata : { labels : { deploy : Text }, name : Text }
+                      , metadata :
+                          { labels : { deploy : Text }
+                          , name : Text
+                          , namespace : Optional Text
+                          }
                       , spec :
                           { accessModes : List Text
                           , resources :
@@ -1151,6 +1194,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { replicas : Natural
@@ -1174,6 +1218,7 @@
                             , `app.kubernetes.io/name` : Text
                             , deploy : Text
                             }
+                        , namespace : Optional Text
                         }
                     , spec :
                         { containers :
@@ -1231,6 +1276,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -1272,6 +1318,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -1305,6 +1352,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -1320,6 +1368,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -1329,7 +1378,9 @@
                 , strategy : { type : Text }
                 , template :
                     { metadata :
-                        { labels : { app : Text, deploy : Text, group : Text } }
+                        { labels : { app : Text, deploy : Text, group : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { pgsql :
@@ -1449,6 +1500,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { accessModes : List Text
@@ -1479,6 +1531,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -1503,6 +1556,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -1511,7 +1565,10 @@
                 , selector : { matchLabels : { app : Text } }
                 , strategy : { type : Text }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { precise-code-intel-bundle-manager :
@@ -1599,6 +1656,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -1611,7 +1669,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { precise-code-intel-worker :
@@ -1692,6 +1753,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { accessModes : List Text
@@ -1722,6 +1784,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -1747,6 +1810,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -1772,6 +1836,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , rules :
                 List
@@ -1794,6 +1859,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , roleRef : { apiGroup : Text, kind : Text, name : Text }
             , subjects :
@@ -1812,6 +1878,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -1827,6 +1894,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -1835,7 +1903,10 @@
                 , selector : { matchLabels : { app : Text } }
                 , strategy : { type : Text }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { prometheus :
@@ -1911,6 +1982,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { accessModes : List Text
@@ -1937,6 +2009,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -1960,6 +2033,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             }
         }
@@ -1977,6 +2051,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -1989,7 +2064,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { jaeger-agent :
@@ -2086,6 +2164,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -2110,6 +2189,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -2118,7 +2198,10 @@
                 , selector : { matchLabels : { app : Text } }
                 , strategy : { type : Text }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { redis-cache :
@@ -2215,6 +2298,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -2223,7 +2307,10 @@
                 , selector : { matchLabels : { app : Text } }
                 , strategy : { type : Text }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { redis-exporter :
@@ -2321,6 +2408,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { accessModes : List Text
@@ -2344,6 +2432,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { accessModes : List Text
@@ -2374,6 +2463,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -2398,6 +2488,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -2422,6 +2513,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -2434,7 +2526,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { jaeger-agent :
@@ -2543,6 +2638,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -2567,6 +2663,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -2579,7 +2676,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { jaeger-agent :
@@ -2703,6 +2803,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -2728,6 +2829,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -2740,7 +2842,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { jaeger-agent :
@@ -2872,6 +2977,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
@@ -2897,6 +3003,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { minReadySeconds : Natural
@@ -2909,7 +3016,10 @@
                     , type : Text
                     }
                 , template :
-                    { metadata : { labels : { app : Text, deploy : Text } }
+                    { metadata :
+                        { labels : { app : Text, deploy : Text }
+                        , namespace : Optional Text
+                        }
                     , spec :
                         { containers :
                             { syntect-server :
@@ -2972,6 +3082,7 @@
                     , sourcegraph-resource-requires : Text
                     }
                 , name : Text
+                , namespace : Optional Text
                 }
             , spec :
                 { ports :
