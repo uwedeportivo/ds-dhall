@@ -16,6 +16,16 @@ let schema =
                       }
                   }
               }
+          , Indexed-Search :
+              { StatefulSet :
+                  { indexed-search :
+                      { containers :
+                          { zoekt-indexserver : customization/container.Type
+                          , zoekt-webserver : customization/container.Type
+                          }
+                      }
+                  }
+              }
           }
       , default =
         { Shared =
@@ -23,6 +33,10 @@ let schema =
         , Frontend.Deployment.sourcegraph-frontend.containers =
           { frontend = customization/container.default
           , jaeger-agent = customization/container.default
+          }
+        , Indexed-Search.StatefulSet.indexed-search.containers =
+          { zoekt-indexserver = customization/container.default
+          , zoekt-webserver = customization/container.default
           }
         }
       }
