@@ -2,7 +2,7 @@ let baseSchema = ../base/schema.dhall
 
 let overlaySchema = ../customizations/schema.dhall
 
-let overlayImage = ../legos/container-images.dhall
+let overlayImage = ../combinators/container-images.dhall
 
 let applyImagef0
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type

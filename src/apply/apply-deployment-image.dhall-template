@@ -2,9 +2,9 @@ let baseSchema = ../base/schema.dhall
 
 let overlaySchema = ../customizations/schema.dhall
 
-let overlayImage = ../legos/container-images.dhall
+let overlayImage = ../combinators/container-images.dhall
 
-{{range .}}
+{{range .DeploymentTuples}}
 let applyImage{{.Identifier}}
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
@@ -33,7 +33,7 @@ let applyAll
         = λ(base : baseSchema.Type) →
           λ(overlay : overlaySchema.Type) →
           let r = base
-          {{range .}}
+          {{range .DeploymentTuples}}
           let r = applyImage{{.Identifier}} r overlay
           {{end}}
           in r

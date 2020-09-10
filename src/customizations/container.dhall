@@ -1,4 +1,4 @@
-let container/resources = ../legos/container-resources.dhall
+let container/resources = ../combinators/container-resources.dhall
 
 let vsType = { version : Text, sha256 : Text }
 
