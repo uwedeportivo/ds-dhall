@@ -113,7 +113,8 @@
         , spec =
           { automountServiceAccountToken = False
           , containers.cadvisor =
-            { args =
+            { additionalEnv = None (List { name : Text, value : Text })
+            , args =
               [ "--store_container_labels=false"
               , "--whitelisted_container_labels=io.kubernetes.container.name,io.kubernetes.pod.name,io.kubernetes.pod.namespace,io.kubernetes.pod.uid"
               ]
@@ -251,34 +252,35 @@
         , spec =
           { containers =
             { frontend =
-              { args = [ "serve" ]
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args = [ "serve" ]
               , env =
-                { CACHE_DIR =
+                { CACHE_DIR = Some
                   { name = "CACHE_DIR", value = "/mnt/cache/\$(POD_NAME)" }
-                , GRAFANA_SERVER_URL =
+                , GRAFANA_SERVER_URL = Some
                   { name = "GRAFANA_SERVER_URL"
                   , value = "http://grafana:30070"
                   }
-                , JAEGER_SERVER_URL =
+                , JAEGER_SERVER_URL = Some
                   { name = "JAEGER_SERVER_URL"
                   , value = "http://jaeger-query:16686"
                   }
-                , PGDATABASE = { name = "PGDATABASE", value = "sg" }
-                , PGHOST = { name = "PGHOST", value = "pgsql" }
-                , PGPORT = { name = "PGPORT", value = "5432" }
-                , PGSSLMODE = { name = "PGSSLMODE", value = "disable" }
-                , PGUSER = { name = "PGUSER", value = "sg" }
-                , POD_NAME =
+                , PGDATABASE = Some { name = "PGDATABASE", value = "sg" }
+                , PGHOST = Some { name = "PGHOST", value = "pgsql" }
+                , PGPORT = Some { name = "PGPORT", value = "5432" }
+                , PGSSLMODE = Some { name = "PGSSLMODE", value = "disable" }
+                , PGUSER = Some { name = "PGUSER", value = "sg" }
+                , POD_NAME = Some
                   { name = "POD_NAME"
                   , valueFrom.fieldRef.fieldPath = "metadata.name"
                   }
-                , PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL =
+                , PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL = Some
                   { name = "PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL"
                   , value = "http://precise-code-intel-bundle-manager:3187"
                   }
-                , PROMETHEUS_URL =
+                , PROMETHEUS_URL = Some
                   { name = "PROMETHEUS_URL", value = "http://prometheus:30090" }
-                , SRC_GIT_SERVERS =
+                , SRC_GIT_SERVERS = Some
                   { name = "SRC_GIT_SERVERS"
                   , value = "gitserver-0.gitserver:3178"
                   }
@@ -333,11 +335,12 @@
                 { mountPath = "/mnt/cache", name = "cache-ssd" }
               }
             , jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -541,7 +544,8 @@
         , spec =
           { containers =
             { github-proxy =
-              { env = None <>
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env = None <>
               , image =
                   < asRecord :
                       { name : Text
@@ -574,11 +578,12 @@
               , terminationMessagePolicy = "FallbackToLogsOnError"
               }
             , jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -708,7 +713,8 @@
         , spec =
           { containers =
             { gitserver =
-              { args = [ "run" ]
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args = [ "run" ]
               , env = None <>
               , image =
                   < asRecord :
@@ -749,11 +755,12 @@
                 { mountPath = "/data/repos", name = "repos" }
               }
             , jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -906,7 +913,8 @@
           }
         , spec =
           { containers.grafana =
-            { image =
+            { additionalEnv = None (List { name : Text, value : Text })
+            , image =
                 < asRecord :
                     { name : Text
                     , registry : Text
@@ -1053,7 +1061,8 @@
         , spec =
           { containers =
             { zoekt-indexserver =
-              { env = None <>
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env = None <>
               , image =
                   < asRecord :
                       { name : Text
@@ -1087,7 +1096,8 @@
               , volumeMounts.data = { mountPath = "/data", name = "data" }
               }
             , zoekt-webserver =
-              { env = None <>
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env = None <>
               , image =
                   < asRecord :
                       { name : Text
@@ -1192,7 +1202,8 @@
           }
         , spec =
           { containers.jaeger =
-            { args = [ "--memory.max-traces=20000" ]
+            { additionalEnv = None (List { name : Text, value : Text })
+            , args = [ "--memory.max-traces=20000" ]
             , image =
                 < asRecord :
                     { name : Text
@@ -2048,7 +2059,8 @@
         , spec =
           { containers =
             { pgsql =
-              { env = None <>
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env = None <>
               , image =
                   < asRecord :
                       { name : Text
@@ -2088,7 +2100,8 @@
                 }
               }
             , pgsql-exporter =
-              { env.DATA_SOURCE_NAME =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env.DATA_SOURCE_NAME = Some
                 { name = "DATA_SOURCE_NAME"
                 , value = "postgres://sg:@localhost:5432/?sslmode=disable"
                 }
@@ -2124,7 +2137,8 @@
               }
             }
           , initContainers.correct-data-dir-permissions =
-            { command =
+            { additionalEnv = None (List { name : Text, value : Text })
+            , command =
               [ "sh"
               , "-c"
               , "if [ -d /data/pgdata-11 ]; then chmod 750 /data/pgdata-11; fi"
@@ -2236,12 +2250,13 @@
             }
           , spec =
             { containers.precise-code-intel-bundle-manager =
-              { env =
-                { POD_NAME =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env =
+                { POD_NAME = Some
                   { name = "POD_NAME"
                   , valueFrom.fieldRef.fieldPath = "metadata.name"
                   }
-                , PRECISE_CODE_INTEL_BUNDLE_DIR =
+                , PRECISE_CODE_INTEL_BUNDLE_DIR = Some
                   { name = "PRECISE_CODE_INTEL_BUNDLE_DIR"
                   , value = "/lsif-storage"
                   }
@@ -2334,13 +2349,14 @@
             }
           , spec =
             { containers.precise-code-intel-worker =
-              { env =
-                { NUM_WORKERS = { name = "NUM_WORKERS", value = "4" }
-                , POD_NAME =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env =
+                { NUM_WORKERS = Some { name = "NUM_WORKERS", value = "4" }
+                , POD_NAME = Some
                   { name = "POD_NAME"
                   , valueFrom.fieldRef.fieldPath = "metadata.name"
                   }
-                , PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL =
+                , PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL = Some
                   { name = "PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL"
                   , value = "http://precise-code-intel-bundle-manager:3187"
                   }
@@ -2822,7 +2838,8 @@
           }
         , spec =
           { containers.prometheus =
-            { image =
+            { additionalEnv = None (List { name : Text, value : Text })
+            , image =
                 < asRecord :
                     { name : Text
                     , registry : Text
@@ -2968,11 +2985,12 @@
         , spec =
           { containers =
             { jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -3013,7 +3031,8 @@
                 }
               }
             , query-runner =
-              { env = None <>
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env = None <>
               , image =
                   < asRecord :
                       { name : Text
@@ -3104,7 +3123,8 @@
           , spec =
             { containers =
               { redis-cache =
-                { env = None <>
+                { additionalEnv = None (List { name : Text, value : Text })
+                , env = None <>
                 , image =
                     < asRecord :
                         { name : Text
@@ -3143,7 +3163,8 @@
                   { mountPath = "/redis-data", name = "redis-data" }
                 }
               , redis-exporter =
-                { image =
+                { additionalEnv = None (List { name : Text, value : Text })
+                , image =
                     < asRecord :
                         { name : Text
                         , registry : Text
@@ -3212,7 +3233,8 @@
           , spec =
             { containers =
               { redis-exporter =
-                { image =
+                { additionalEnv = None (List { name : Text, value : Text })
+                , image =
                     < asRecord :
                         { name : Text
                         , registry : Text
@@ -3244,7 +3266,8 @@
                 , terminationMessagePolicy = "FallbackToLogsOnError"
                 }
               , redis-store =
-                { env = None <>
+                { additionalEnv = None (List { name : Text, value : Text })
+                , env = None <>
                 , image =
                     < asRecord :
                         { name : Text
@@ -3414,11 +3437,12 @@
         , spec =
           { containers =
             { jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -3459,7 +3483,8 @@
                 }
               }
             , repo-updater =
-              { env = None <>
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env = None <>
               , image =
                   < asRecord :
                       { name : Text
@@ -3562,11 +3587,12 @@
         , spec =
           { containers =
             { jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -3607,14 +3633,15 @@
                 }
               }
             , searcher =
-              { env =
-                { CACHE_DIR =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env =
+                { CACHE_DIR = Some
                   { name = "CACHE_DIR", value = "/mnt/cache/\$(POD_NAME)" }
-                , POD_NAME =
+                , POD_NAME = Some
                   { name = "POD_NAME"
                   , valueFrom.fieldRef.fieldPath = "metadata.name"
                   }
-                , SEARCHER_CACHE_SIZE_MB =
+                , SEARCHER_CACHE_SIZE_MB = Some
                   { name = "SEARCHER_CACHE_SIZE_MB", value = "100000" }
                 }
               , image =
@@ -3725,11 +3752,12 @@
         , spec =
           { containers =
             { jaeger-agent =
-              { args =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , args =
                 [ "--reporter.grpc.host-port=jaeger-collector:14250"
                 , "--reporter.type=grpc"
                 ]
-              , env.POD_NAME =
+              , env.POD_NAME = Some
                 { name = "POD_NAME"
                 , valueFrom.fieldRef =
                   { apiVersion = "v1", fieldPath = "metadata.name" }
@@ -3770,14 +3798,15 @@
                 }
               }
             , symbols =
-              { env =
-                { CACHE_DIR =
+              { additionalEnv = None (List { name : Text, value : Text })
+              , env =
+                { CACHE_DIR = Some
                   { name = "CACHE_DIR", value = "/mnt/cache/\$(POD_NAME)" }
-                , POD_NAME =
+                , POD_NAME = Some
                   { name = "POD_NAME"
                   , valueFrom.fieldRef.fieldPath = "metadata.name"
                   }
-                , SYMBOLS_CACHE_SIZE_MB =
+                , SYMBOLS_CACHE_SIZE_MB = Some
                   { name = "SYMBOLS_CACHE_SIZE_MB", value = "100000" }
                 }
               , image =
@@ -3892,7 +3921,8 @@
           }
         , spec =
           { containers.syntect-server =
-            { env = None <>
+            { additionalEnv = None (List { name : Text, value : Text })
+            , env = None <>
             , image =
                 < asRecord :
                     { name : Text

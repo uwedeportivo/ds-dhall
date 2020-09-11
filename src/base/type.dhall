@@ -176,6 +176,9 @@
                                         , readOnly : Bool
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , serviceAccountName : Text
@@ -272,27 +275,35 @@
                             { frontend :
                                 { args : List Text
                                 , env :
-                                    { CACHE_DIR : { name : Text, value : Text }
+                                    { CACHE_DIR :
+                                        Optional { name : Text, value : Text }
                                     , GRAFANA_SERVER_URL :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     , JAEGER_SERVER_URL :
-                                        { name : Text, value : Text }
-                                    , PGDATABASE : { name : Text, value : Text }
-                                    , PGHOST : { name : Text, value : Text }
-                                    , PGPORT : { name : Text, value : Text }
-                                    , PGSSLMODE : { name : Text, value : Text }
-                                    , PGUSER : { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
+                                    , PGDATABASE :
+                                        Optional { name : Text, value : Text }
+                                    , PGHOST :
+                                        Optional { name : Text, value : Text }
+                                    , PGPORT :
+                                        Optional { name : Text, value : Text }
+                                    , PGSSLMODE :
+                                        Optional { name : Text, value : Text }
+                                    , PGUSER :
+                                        Optional { name : Text, value : Text }
                                     , POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef : { fieldPath : Text } }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef : { fieldPath : Text }
+                                              }
+                                          }
                                     , PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     , PROMETHEUS_URL :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     , SRC_GIT_SERVERS :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     }
                                 , image :
                                     < asText : Text
@@ -345,19 +356,23 @@
                                     { cache-ssd :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , jaeger-agent :
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -386,6 +401,9 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -600,19 +618,23 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , jaeger-agent :
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -641,6 +663,9 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -778,19 +803,23 @@
                                 , volumeMounts :
                                     { repos : { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , jaeger-agent :
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -819,6 +848,9 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -963,6 +995,9 @@
                                     , grafana-data :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -1108,6 +1143,9 @@
                                 , terminationMessagePolicy : Text
                                 , volumeMounts :
                                     { data : { mountPath : Text, name : Text } }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , zoekt-webserver :
                                 { env : Optional <>
@@ -1150,6 +1188,9 @@
                                 , terminationMessagePolicy : Text
                                 , volumeMounts :
                                     { data : { mountPath : Text, name : Text } }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -1257,6 +1298,9 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -1425,11 +1469,14 @@
                                     , pgsql-conf :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , pgsql-exporter :
                                 { env :
                                     { DATA_SOURCE_NAME :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     }
                                 , image :
                                     < asText : Text
@@ -1454,6 +1501,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , initContainers :
@@ -1472,6 +1522,9 @@
                                 , securityContext : { runAsUser : Natural }
                                 , volumeMounts :
                                     { disk : { mountPath : Text, name : Text } }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -1576,12 +1629,14 @@
                             { precise-code-intel-bundle-manager :
                                 { env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef : { fieldPath : Text } }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef : { fieldPath : Text }
+                                              }
+                                          }
                                     , PRECISE_CODE_INTEL_BUNDLE_DIR :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     }
                                 , image :
                                     < asText : Text
@@ -1634,6 +1689,9 @@
                                     { bundle-manager :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -1680,14 +1738,16 @@
                             { precise-code-intel-worker :
                                 { env :
                                     { NUM_WORKERS :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     , POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef : { fieldPath : Text } }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef : { fieldPath : Text }
+                                              }
+                                          }
                                     , PRECISE_CODE_INTEL_BUNDLE_MANAGER_URL :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     }
                                 , image :
                                     < asText : Text
@@ -1736,6 +1796,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -1953,6 +2016,9 @@
                                     { config : { mountPath : Text, name : Text }
                                     , data : { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -2076,14 +2142,15 @@
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -2112,6 +2179,9 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , query-runner :
                                 { env : Optional <>
@@ -2142,6 +2212,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -2247,6 +2320,9 @@
                                     { redis-data :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , redis-exporter :
                                 { image :
@@ -2276,6 +2352,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -2343,6 +2422,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , redis-store :
                                 { env : Optional <>
@@ -2385,6 +2467,9 @@
                                     { redis-data :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -2538,14 +2623,15 @@
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -2574,6 +2660,9 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , repo-updater :
                                 { env : Optional <>
@@ -2616,6 +2705,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -2688,14 +2780,15 @@
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -2724,17 +2817,23 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , searcher :
                                 { env :
-                                    { CACHE_DIR : { name : Text, value : Text }
+                                    { CACHE_DIR :
+                                        Optional { name : Text, value : Text }
                                     , POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef : { fieldPath : Text } }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef : { fieldPath : Text }
+                                              }
+                                          }
                                     , SEARCHER_CACHE_SIZE_MB :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     }
                                 , image :
                                     < asText : Text
@@ -2779,6 +2878,9 @@
                                     { cache-ssd :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -2854,14 +2956,15 @@
                                 { args : List Text
                                 , env :
                                     { POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef :
-                                                { apiVersion : Text
-                                                , fieldPath : Text
-                                                }
-                                            }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef :
+                                                  { apiVersion : Text
+                                                  , fieldPath : Text
+                                                  }
+                                              }
+                                          }
                                     }
                                 , image :
                                     < asText : Text
@@ -2890,17 +2993,23 @@
                                         , ephemeralStorage : Optional Text
                                         }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             , symbols :
                                 { env :
-                                    { CACHE_DIR : { name : Text, value : Text }
+                                    { CACHE_DIR :
+                                        Optional { name : Text, value : Text }
                                     , POD_NAME :
-                                        { name : Text
-                                        , valueFrom :
-                                            { fieldRef : { fieldPath : Text } }
-                                        }
+                                        Optional
+                                          { name : Text
+                                          , valueFrom :
+                                              { fieldRef : { fieldPath : Text }
+                                              }
+                                          }
                                     , SYMBOLS_CACHE_SIZE_MB :
-                                        { name : Text, value : Text }
+                                        Optional { name : Text, value : Text }
                                     }
                                 , image :
                                     < asText : Text
@@ -2953,6 +3062,9 @@
                                     { cache-ssd :
                                         { mountPath : Text, name : Text }
                                     }
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
@@ -3064,6 +3176,9 @@
                                         }
                                     }
                                 , terminationMessagePolicy : Text
+                                , additionalEnv :
+                                    Optional
+                                      (List { name : Text, value : Text })
                                 }
                             }
                         , securityContext : { runAsUser : Natural }
