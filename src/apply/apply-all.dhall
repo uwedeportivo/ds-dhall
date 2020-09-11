@@ -10,6 +10,10 @@ let applyDeploymentResources = ./apply-deployment-resources.dhall
 
 let applyStatefulSetResources = ./apply-statefulset-resources.dhall
 
+let applyDeploymentAdditionalEnv = ./apply-deployment-additional-env.dhall
+
+let applyStatefulSetAdditionalEnv = ./apply-statefulset-additional-env.dhall
+
 let applyNamespace = ./apply-namespace.dhall
 
 let applyAll
@@ -25,6 +29,10 @@ let applyAll
         let r = applyDeploymentResources r overlay
 
         let r = applyStatefulSetResources r overlay
+
+        let r = applyDeploymentAdditionalEnv r overlay
+
+        let r = applyStatefulSetAdditionalEnv r overlay
 
         let r = applyNamespace r overlay
 
