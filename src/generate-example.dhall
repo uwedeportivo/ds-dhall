@@ -2,7 +2,9 @@ let baseSchema = ./base/schema.dhall
 
 let overlaySchema = ./customizations/schema.dhall
 
-let apply = ./apply/apply-all.dhall
+let resourceCombinator = ./combinators/container-resources.dhall
+
+let applyAll = ./apply/apply-all.dhall
 
 let base = baseSchema::{=}
 
@@ -14,17 +16,18 @@ let overlay = overlay with Shared.namespace = Some "ns-sourcegraph"
 
 let overlay =
       overlay
-      with   Symbols
-           . Deployment
-           . symbols
-           . containers
-           . jaeger-agent
-           . resources
-           . limits
-           . cpu
-           = Some
-          "500m"
+      with Symbols.Deployment.symbols.containers.jaeger-agent.resources
+           = Some resourceCombinator::{
+        , limits = resourceCombinator.Configuration::{ cpu = Some "500m" }
+        }
 
-let r = apply base overlay
+let overlay =
+      overlay
+      with Gitserver.StatefulSet.gitserver.containers.gitserver.resources
+           = Some resourceCombinator::{
+        , limits = resourceCombinator.Configuration::{ cpu = Some "500m" }
+        }
+
+let r = applyAll base overlay
 
 in  r
