@@ -19,8 +19,8 @@ let applyNamespacef0
                 overlayNamespace
 
         in  base
-          with Syntect-Server.Deployment.syntect-server.metadata.namespace =
-              finalNamespace
+          with Syntect-Server.Deployment.syntect-server.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -37,8 +37,8 @@ let applyNamespacef1
                 overlayNamespace
 
         in  base
-          with Syntect-Server.Service.syntect-server.metadata.namespace =
-              finalNamespace
+          with Syntect-Server.Service.syntect-server.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -71,8 +71,8 @@ let applyNamespacef3
                 overlayNamespace
 
         in  base
-          with Gitserver.StatefulSet.gitserver.metadata.namespace =
-              finalNamespace
+          with Gitserver.StatefulSet.gitserver.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -89,8 +89,8 @@ let applyNamespacef4
                 overlayNamespace
 
         in  base
-          with Indexed-Search.Service.indexed-search.metadata.namespace =
-              finalNamespace
+          with Indexed-Search.Service.indexed-search.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef5
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -107,8 +107,8 @@ let applyNamespacef5
                 overlayNamespace
 
         in  base
-          with Indexed-Search.Service.indexed-search-indexer.metadata.namespace =
-              finalNamespace
+          with Indexed-Search.Service.indexed-search-indexer.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef6
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -125,8 +125,8 @@ let applyNamespacef6
                 overlayNamespace
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.metadata.namespace =
-              finalNamespace
+          with Indexed-Search.StatefulSet.indexed-search.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef7
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -143,8 +143,12 @@ let applyNamespacef7
                 overlayNamespace
 
         in  base
-          with Precise-Code-Intel.PersistentVolumeClaim.bundle-manager.metadata.namespace =
-              finalNamespace
+          with   Precise-Code-Intel
+               . PersistentVolumeClaim
+               . bundle-manager
+               . metadata
+               . namespace
+               = finalNamespace
 
 let applyNamespacef8
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -161,8 +165,12 @@ let applyNamespacef8
                 overlayNamespace
 
         in  base
-          with Precise-Code-Intel.Service.precise-code-intel-bundle-manager.metadata.namespace =
-              finalNamespace
+          with   Precise-Code-Intel
+               . Service
+               . precise-code-intel-bundle-manager
+               . metadata
+               . namespace
+               = finalNamespace
 
 let applyNamespacef9
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -179,8 +187,12 @@ let applyNamespacef9
                 overlayNamespace
 
         in  base
-          with Precise-Code-Intel.Service.precise-code-intel-worker.metadata.namespace =
-              finalNamespace
+          with   Precise-Code-Intel
+               . Service
+               . precise-code-intel-worker
+               . metadata
+               . namespace
+               = finalNamespace
 
 let applyNamespacef10
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -197,8 +209,12 @@ let applyNamespacef10
                 overlayNamespace
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-bundle-manager.metadata.namespace =
-              finalNamespace
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-bundle-manager
+               . metadata
+               . namespace
+               = finalNamespace
 
 let applyNamespacef11
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -215,8 +231,12 @@ let applyNamespacef11
                 overlayNamespace
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-worker.metadata.namespace =
-              finalNamespace
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-worker
+               . metadata
+               . namespace
+               = finalNamespace
 
 let applyNamespacef12
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -265,8 +285,8 @@ let applyNamespacef14
                 overlayNamespace
 
         in  base
-          with Redis.PersistentVolumeClaim.redis-cache.metadata.namespace =
-              finalNamespace
+          with Redis.PersistentVolumeClaim.redis-cache.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef15
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -283,8 +303,8 @@ let applyNamespacef15
                 overlayNamespace
 
         in  base
-          with Redis.PersistentVolumeClaim.redis-store.metadata.namespace =
-              finalNamespace
+          with Redis.PersistentVolumeClaim.redis-store.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef16
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -366,8 +386,8 @@ let applyNamespacef20
                 overlayNamespace
 
         in  base
-          with Grafana.ServiceAccount.grafana.metadata.namespace =
-              finalNamespace
+          with Grafana.ServiceAccount.grafana.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef21
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -448,8 +468,8 @@ let applyNamespacef25
                 overlayNamespace
 
         in  base
-          with Jaeger.Service.jaeger-collector.metadata.namespace =
-              finalNamespace
+          with Jaeger.Service.jaeger-collector.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef26
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -482,8 +502,8 @@ let applyNamespacef27
                 overlayNamespace
 
         in  base
-          with Query-Runner.Deployment.query-runner.metadata.namespace =
-              finalNamespace
+          with Query-Runner.Deployment.query-runner.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef28
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -500,8 +520,8 @@ let applyNamespacef28
                 overlayNamespace
 
         in  base
-          with Query-Runner.Service.query-runner.metadata.namespace =
-              finalNamespace
+          with Query-Runner.Service.query-runner.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef29
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -518,8 +538,8 @@ let applyNamespacef29
                 overlayNamespace
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.metadata.namespace =
-              finalNamespace
+          with Repo-Updater.Deployment.repo-updater.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef30
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -536,8 +556,8 @@ let applyNamespacef30
                 overlayNamespace
 
         in  base
-          with Repo-Updater.Service.repo-updater.metadata.namespace =
-              finalNamespace
+          with Repo-Updater.Service.repo-updater.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef31
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -586,8 +606,8 @@ let applyNamespacef33
                 overlayNamespace
 
         in  base
-          with Prometheus.ClusterRole.prometheus.metadata.namespace =
-              finalNamespace
+          with Prometheus.ClusterRole.prometheus.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef34
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -604,8 +624,8 @@ let applyNamespacef34
                 overlayNamespace
 
         in  base
-          with Prometheus.ClusterRoleBinding.prometheus.metadata.namespace =
-              finalNamespace
+          with Prometheus.ClusterRoleBinding.prometheus.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef35
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -622,8 +642,8 @@ let applyNamespacef35
                 overlayNamespace
 
         in  base
-          with Prometheus.ConfigMap.prometheus.metadata.namespace =
-              finalNamespace
+          with Prometheus.ConfigMap.prometheus.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef36
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -640,8 +660,8 @@ let applyNamespacef36
                 overlayNamespace
 
         in  base
-          with Prometheus.Deployment.prometheus.metadata.namespace =
-              finalNamespace
+          with Prometheus.Deployment.prometheus.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef37
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -658,8 +678,8 @@ let applyNamespacef37
                 overlayNamespace
 
         in  base
-          with Prometheus.PersistentVolumeClaim.prometheus.metadata.namespace =
-              finalNamespace
+          with Prometheus.PersistentVolumeClaim.prometheus.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef38
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -693,8 +713,8 @@ let applyNamespacef39
                 overlayNamespace
 
         in  base
-          with Prometheus.ServiceAccount.prometheus.metadata.namespace =
-              finalNamespace
+          with Prometheus.ServiceAccount.prometheus.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef40
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -743,8 +763,8 @@ let applyNamespacef42
                 overlayNamespace
 
         in  base
-          with Cadvisor.ServiceAccount.cadvisor.metadata.namespace =
-              finalNamespace
+          with Cadvisor.ServiceAccount.cadvisor.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef43
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -778,8 +798,8 @@ let applyNamespacef44
                 overlayNamespace
 
         in  base
-          with Cadvisor.ClusterRoleBinding.cadvisor.metadata.namespace =
-              finalNamespace
+          with Cadvisor.ClusterRoleBinding.cadvisor.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef45
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -812,8 +832,8 @@ let applyNamespacef46
                 overlayNamespace
 
         in  base
-          with Cadvisor.PodSecurityPolicy.cadvisor.metadata.namespace =
-              finalNamespace
+          with Cadvisor.PodSecurityPolicy.cadvisor.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef47
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -830,8 +850,8 @@ let applyNamespacef47
                 overlayNamespace
 
         in  base
-          with Frontend.RoleBinding.sourcegraph-frontend.metadata.namespace =
-              finalNamespace
+          with Frontend.RoleBinding.sourcegraph-frontend.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef48
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -848,8 +868,8 @@ let applyNamespacef48
                 overlayNamespace
 
         in  base
-          with Frontend.Service.sourcegraph-frontend.metadata.namespace =
-              finalNamespace
+          with Frontend.Service.sourcegraph-frontend.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef49
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -866,8 +886,8 @@ let applyNamespacef49
                 overlayNamespace
 
         in  base
-          with Frontend.Service.sourcegraph-frontend-internal.metadata.namespace =
-              finalNamespace
+          with Frontend.Service.sourcegraph-frontend-internal.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef50
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -884,8 +904,8 @@ let applyNamespacef50
                 overlayNamespace
 
         in  base
-          with Frontend.ServiceAccount.sourcegraph-frontend.metadata.namespace =
-              finalNamespace
+          with Frontend.ServiceAccount.sourcegraph-frontend.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef51
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -902,8 +922,8 @@ let applyNamespacef51
                 overlayNamespace
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.metadata.namespace =
-              finalNamespace
+          with Frontend.Deployment.sourcegraph-frontend.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef52
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -920,8 +940,8 @@ let applyNamespacef52
                 overlayNamespace
 
         in  base
-          with Frontend.Ingress.sourcegraph-frontend.metadata.namespace =
-              finalNamespace
+          with Frontend.Ingress.sourcegraph-frontend.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef53
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -938,8 +958,8 @@ let applyNamespacef53
                 overlayNamespace
 
         in  base
-          with Frontend.Role.sourcegraph-frontend.metadata.namespace =
-              finalNamespace
+          with Frontend.Role.sourcegraph-frontend.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef54
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -956,8 +976,8 @@ let applyNamespacef54
                 overlayNamespace
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.metadata.namespace =
-              finalNamespace
+          with Github-Proxy.Deployment.github-proxy.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef55
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -974,8 +994,8 @@ let applyNamespacef55
                 overlayNamespace
 
         in  base
-          with Github-Proxy.Service.github-proxy.metadata.namespace =
-              finalNamespace
+          with Github-Proxy.Service.github-proxy.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef56
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -1024,8 +1044,8 @@ let applyNamespacef58
                 overlayNamespace
 
         in  base
-          with Pgsql.PersistentVolumeClaim.pgsql.metadata.namespace =
-              finalNamespace
+          with Pgsql.PersistentVolumeClaim.pgsql.metadata.namespace
+               = finalNamespace
 
 let applyNamespacef59
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type

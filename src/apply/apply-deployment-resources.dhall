@@ -20,8 +20,16 @@ let applyResourcesf0
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-bundle-manager.spec.template.spec.containers.precise-code-intel-bundle-manager.resources =
-              finalResources
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-bundle-manager
+               . spec
+               . template
+               . spec
+               . containers
+               . precise-code-intel-bundle-manager
+               . resources
+               = finalResources
 
 let applyResourcesf1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -37,8 +45,16 @@ let applyResourcesf1
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-worker.spec.template.spec.containers.precise-code-intel-worker.resources =
-              finalResources
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-worker
+               . spec
+               . template
+               . spec
+               . containers
+               . precise-code-intel-worker
+               . resources
+               = finalResources
 
 let applyResourcesf2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -54,8 +70,16 @@ let applyResourcesf2
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Redis.Deployment.redis-cache.spec.template.spec.containers.redis-cache.resources =
-              finalResources
+          with   Redis
+               . Deployment
+               . redis-cache
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-cache
+               . resources
+               = finalResources
 
 let applyResourcesf3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -71,8 +95,16 @@ let applyResourcesf3
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Redis.Deployment.redis-cache.spec.template.spec.containers.redis-exporter.resources =
-              finalResources
+          with   Redis
+               . Deployment
+               . redis-cache
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-exporter
+               . resources
+               = finalResources
 
 let applyResourcesf4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -88,8 +120,16 @@ let applyResourcesf4
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Redis.Deployment.redis-store.spec.template.spec.containers.redis-store.resources =
-              finalResources
+          with   Redis
+               . Deployment
+               . redis-store
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-store
+               . resources
+               = finalResources
 
 let applyResourcesf5
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -105,8 +145,16 @@ let applyResourcesf5
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Redis.Deployment.redis-store.spec.template.spec.containers.redis-exporter.resources =
-              finalResources
+          with   Redis
+               . Deployment
+               . redis-store
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-exporter
+               . resources
+               = finalResources
 
 let applyResourcesf6
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -122,8 +170,16 @@ let applyResourcesf6
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Syntect-Server.Deployment.syntect-server.spec.template.spec.containers.syntect-server.resources =
-              finalResources
+          with   Syntect-Server
+               . Deployment
+               . syntect-server
+               . spec
+               . template
+               . spec
+               . containers
+               . syntect-server
+               . resources
+               = finalResources
 
 let applyResourcesf7
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -139,8 +195,16 @@ let applyResourcesf7
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Jaeger.Deployment.jaeger.spec.template.spec.containers.jaeger.resources =
-              finalResources
+          with   Jaeger
+               . Deployment
+               . jaeger
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger
+               . resources
+               = finalResources
 
 let applyResourcesf8
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -156,8 +220,16 @@ let applyResourcesf8
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Searcher.Deployment.searcher.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Searcher
+               . Deployment
+               . searcher
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf9
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -173,8 +245,16 @@ let applyResourcesf9
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Searcher.Deployment.searcher.spec.template.spec.containers.searcher.resources =
-              finalResources
+          with   Searcher
+               . Deployment
+               . searcher
+               . spec
+               . template
+               . spec
+               . containers
+               . searcher
+               . resources
+               = finalResources
 
 let applyResourcesf10
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -190,8 +270,16 @@ let applyResourcesf10
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Query-Runner.Deployment.query-runner.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Query-Runner
+               . Deployment
+               . query-runner
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf11
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -207,8 +295,16 @@ let applyResourcesf11
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Query-Runner.Deployment.query-runner.spec.template.spec.containers.query-runner.resources =
-              finalResources
+          with   Query-Runner
+               . Deployment
+               . query-runner
+               . spec
+               . template
+               . spec
+               . containers
+               . query-runner
+               . resources
+               = finalResources
 
 let applyResourcesf12
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -224,8 +320,16 @@ let applyResourcesf12
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Repo-Updater
+               . Deployment
+               . repo-updater
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf13
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -241,8 +345,16 @@ let applyResourcesf13
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.spec.template.spec.containers.repo-updater.resources =
-              finalResources
+          with   Repo-Updater
+               . Deployment
+               . repo-updater
+               . spec
+               . template
+               . spec
+               . containers
+               . repo-updater
+               . resources
+               = finalResources
 
 let applyResourcesf14
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -258,8 +370,16 @@ let applyResourcesf14
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.spec.template.spec.containers.github-proxy.resources =
-              finalResources
+          with   Github-Proxy
+               . Deployment
+               . github-proxy
+               . spec
+               . template
+               . spec
+               . containers
+               . github-proxy
+               . resources
+               = finalResources
 
 let applyResourcesf15
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -275,8 +395,16 @@ let applyResourcesf15
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Github-Proxy
+               . Deployment
+               . github-proxy
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf16
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -292,8 +420,16 @@ let applyResourcesf16
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql.resources =
-              finalResources
+          with   Pgsql
+               . Deployment
+               . pgsql
+               . spec
+               . template
+               . spec
+               . containers
+               . pgsql
+               . resources
+               = finalResources
 
 let applyResourcesf17
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -309,8 +445,16 @@ let applyResourcesf17
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql-exporter.resources =
-              finalResources
+          with   Pgsql
+               . Deployment
+               . pgsql
+               . spec
+               . template
+               . spec
+               . containers
+               . pgsql-exporter
+               . resources
+               = finalResources
 
 let applyResourcesf18
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -326,8 +470,16 @@ let applyResourcesf18
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Prometheus.Deployment.prometheus.spec.template.spec.containers.prometheus.resources =
-              finalResources
+          with   Prometheus
+               . Deployment
+               . prometheus
+               . spec
+               . template
+               . spec
+               . containers
+               . prometheus
+               . resources
+               = finalResources
 
 let applyResourcesf19
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -343,8 +495,16 @@ let applyResourcesf19
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Symbols.Deployment.symbols.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Symbols
+               . Deployment
+               . symbols
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf20
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -360,8 +520,16 @@ let applyResourcesf20
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Symbols.Deployment.symbols.spec.template.spec.containers.symbols.resources =
-              finalResources
+          with   Symbols
+               . Deployment
+               . symbols
+               . spec
+               . template
+               . spec
+               . containers
+               . symbols
+               . resources
+               = finalResources
 
 let applyResourcesf21
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -377,8 +545,16 @@ let applyResourcesf21
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Frontend
+               . Deployment
+               . sourcegraph-frontend
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf22
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -394,8 +570,16 @@ let applyResourcesf22
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.spec.template.spec.containers.frontend.resources =
-              finalResources
+          with   Frontend
+               . Deployment
+               . sourcegraph-frontend
+               . spec
+               . template
+               . spec
+               . containers
+               . frontend
+               . resources
+               = finalResources
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type

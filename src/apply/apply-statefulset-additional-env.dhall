@@ -22,8 +22,16 @@ let applyAddtionalEnvf0
                 overlayAdditionalEnv
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-indexserver.additionalEnv =
-              finalAdditionalEnv
+          with   Indexed-Search
+               . StatefulSet
+               . indexed-search
+               . spec
+               . template
+               . spec
+               . containers
+               . zoekt-indexserver
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -43,8 +51,16 @@ let applyAddtionalEnvf1
                 overlayAdditionalEnv
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-webserver.additionalEnv =
-              finalAdditionalEnv
+          with   Indexed-Search
+               . StatefulSet
+               . indexed-search
+               . spec
+               . template
+               . spec
+               . containers
+               . zoekt-webserver
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -64,8 +80,16 @@ let applyAddtionalEnvf2
                 overlayAdditionalEnv
 
         in  base
-          with Gitserver.StatefulSet.gitserver.spec.template.spec.containers.gitserver.additionalEnv =
-              finalAdditionalEnv
+          with   Gitserver
+               . StatefulSet
+               . gitserver
+               . spec
+               . template
+               . spec
+               . containers
+               . gitserver
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -85,8 +109,16 @@ let applyAddtionalEnvf3
                 overlayAdditionalEnv
 
         in  base
-          with Gitserver.StatefulSet.gitserver.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Gitserver
+               . StatefulSet
+               . gitserver
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -106,8 +138,16 @@ let applyAddtionalEnvf4
                 overlayAdditionalEnv
 
         in  base
-          with Grafana.StatefulSet.grafana.spec.template.spec.containers.grafana.additionalEnv =
-              finalAdditionalEnv
+          with   Grafana
+               . StatefulSet
+               . grafana
+               . spec
+               . template
+               . spec
+               . containers
+               . grafana
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type

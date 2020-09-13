@@ -22,8 +22,16 @@ let applyAddtionalEnvf0
                 overlayAdditionalEnv
 
         in  base
-          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql.additionalEnv =
-              finalAdditionalEnv
+          with   Pgsql
+               . Deployment
+               . pgsql
+               . spec
+               . template
+               . spec
+               . containers
+               . pgsql
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -43,8 +51,16 @@ let applyAddtionalEnvf1
                 overlayAdditionalEnv
 
         in  base
-          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql-exporter.additionalEnv =
-              finalAdditionalEnv
+          with   Pgsql
+               . Deployment
+               . pgsql
+               . spec
+               . template
+               . spec
+               . containers
+               . pgsql-exporter
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -64,8 +80,16 @@ let applyAddtionalEnvf2
                 overlayAdditionalEnv
 
         in  base
-          with Symbols.Deployment.symbols.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Symbols
+               . Deployment
+               . symbols
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -85,8 +109,16 @@ let applyAddtionalEnvf3
                 overlayAdditionalEnv
 
         in  base
-          with Symbols.Deployment.symbols.spec.template.spec.containers.symbols.additionalEnv =
-              finalAdditionalEnv
+          with   Symbols
+               . Deployment
+               . symbols
+               . spec
+               . template
+               . spec
+               . containers
+               . symbols
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -106,8 +138,16 @@ let applyAddtionalEnvf4
                 overlayAdditionalEnv
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.spec.template.spec.containers.github-proxy.additionalEnv =
-              finalAdditionalEnv
+          with   Github-Proxy
+               . Deployment
+               . github-proxy
+               . spec
+               . template
+               . spec
+               . containers
+               . github-proxy
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf5
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -127,8 +167,16 @@ let applyAddtionalEnvf5
                 overlayAdditionalEnv
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Github-Proxy
+               . Deployment
+               . github-proxy
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf6
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -148,8 +196,16 @@ let applyAddtionalEnvf6
                 overlayAdditionalEnv
 
         in  base
-          with Prometheus.Deployment.prometheus.spec.template.spec.containers.prometheus.additionalEnv =
-              finalAdditionalEnv
+          with   Prometheus
+               . Deployment
+               . prometheus
+               . spec
+               . template
+               . spec
+               . containers
+               . prometheus
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf7
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -169,8 +225,16 @@ let applyAddtionalEnvf7
                 overlayAdditionalEnv
 
         in  base
-          with Syntect-Server.Deployment.syntect-server.spec.template.spec.containers.syntect-server.additionalEnv =
-              finalAdditionalEnv
+          with   Syntect-Server
+               . Deployment
+               . syntect-server
+               . spec
+               . template
+               . spec
+               . containers
+               . syntect-server
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf8
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -190,8 +254,16 @@ let applyAddtionalEnvf8
                 overlayAdditionalEnv
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.spec.template.spec.containers.frontend.additionalEnv =
-              finalAdditionalEnv
+          with   Frontend
+               . Deployment
+               . sourcegraph-frontend
+               . spec
+               . template
+               . spec
+               . containers
+               . frontend
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf9
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -211,8 +283,16 @@ let applyAddtionalEnvf9
                 overlayAdditionalEnv
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Frontend
+               . Deployment
+               . sourcegraph-frontend
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf10
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -232,8 +312,16 @@ let applyAddtionalEnvf10
                 overlayAdditionalEnv
 
         in  base
-          with Jaeger.Deployment.jaeger.spec.template.spec.containers.jaeger.additionalEnv =
-              finalAdditionalEnv
+          with   Jaeger
+               . Deployment
+               . jaeger
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf11
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -253,8 +341,16 @@ let applyAddtionalEnvf11
                 overlayAdditionalEnv
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Repo-Updater
+               . Deployment
+               . repo-updater
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf12
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -274,8 +370,16 @@ let applyAddtionalEnvf12
                 overlayAdditionalEnv
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.spec.template.spec.containers.repo-updater.additionalEnv =
-              finalAdditionalEnv
+          with   Repo-Updater
+               . Deployment
+               . repo-updater
+               . spec
+               . template
+               . spec
+               . containers
+               . repo-updater
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf13
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -295,8 +399,16 @@ let applyAddtionalEnvf13
                 overlayAdditionalEnv
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-bundle-manager.spec.template.spec.containers.precise-code-intel-bundle-manager.additionalEnv =
-              finalAdditionalEnv
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-bundle-manager
+               . spec
+               . template
+               . spec
+               . containers
+               . precise-code-intel-bundle-manager
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf14
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -316,8 +428,16 @@ let applyAddtionalEnvf14
                 overlayAdditionalEnv
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-worker.spec.template.spec.containers.precise-code-intel-worker.additionalEnv =
-              finalAdditionalEnv
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-worker
+               . spec
+               . template
+               . spec
+               . containers
+               . precise-code-intel-worker
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf15
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -337,8 +457,16 @@ let applyAddtionalEnvf15
                 overlayAdditionalEnv
 
         in  base
-          with Query-Runner.Deployment.query-runner.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Query-Runner
+               . Deployment
+               . query-runner
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf16
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -358,8 +486,16 @@ let applyAddtionalEnvf16
                 overlayAdditionalEnv
 
         in  base
-          with Query-Runner.Deployment.query-runner.spec.template.spec.containers.query-runner.additionalEnv =
-              finalAdditionalEnv
+          with   Query-Runner
+               . Deployment
+               . query-runner
+               . spec
+               . template
+               . spec
+               . containers
+               . query-runner
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf17
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -379,8 +515,16 @@ let applyAddtionalEnvf17
                 overlayAdditionalEnv
 
         in  base
-          with Redis.Deployment.redis-cache.spec.template.spec.containers.redis-cache.additionalEnv =
-              finalAdditionalEnv
+          with   Redis
+               . Deployment
+               . redis-cache
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-cache
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf18
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -400,8 +544,16 @@ let applyAddtionalEnvf18
                 overlayAdditionalEnv
 
         in  base
-          with Redis.Deployment.redis-cache.spec.template.spec.containers.redis-exporter.additionalEnv =
-              finalAdditionalEnv
+          with   Redis
+               . Deployment
+               . redis-cache
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-exporter
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf19
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -421,8 +573,16 @@ let applyAddtionalEnvf19
                 overlayAdditionalEnv
 
         in  base
-          with Redis.Deployment.redis-store.spec.template.spec.containers.redis-exporter.additionalEnv =
-              finalAdditionalEnv
+          with   Redis
+               . Deployment
+               . redis-store
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-exporter
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf20
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -442,8 +602,16 @@ let applyAddtionalEnvf20
                 overlayAdditionalEnv
 
         in  base
-          with Redis.Deployment.redis-store.spec.template.spec.containers.redis-store.additionalEnv =
-              finalAdditionalEnv
+          with   Redis
+               . Deployment
+               . redis-store
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-store
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf21
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -463,8 +631,16 @@ let applyAddtionalEnvf21
                 overlayAdditionalEnv
 
         in  base
-          with Searcher.Deployment.searcher.spec.template.spec.containers.jaeger-agent.additionalEnv =
-              finalAdditionalEnv
+          with   Searcher
+               . Deployment
+               . searcher
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAddtionalEnvf22
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -484,8 +660,16 @@ let applyAddtionalEnvf22
                 overlayAdditionalEnv
 
         in  base
-          with Searcher.Deployment.searcher.spec.template.spec.containers.searcher.additionalEnv =
-              finalAdditionalEnv
+          with   Searcher
+               . Deployment
+               . searcher
+               . spec
+               . template
+               . spec
+               . containers
+               . searcher
+               . additionalEnv
+               = finalAdditionalEnv
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
