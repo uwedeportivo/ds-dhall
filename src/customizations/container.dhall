@@ -4,12 +4,12 @@ let vsType = { version : Text, sha256 : Text }
 
 let container =
       { Type =
-          { resources : container/resources.Type
+          { resources : Optional container/resources.Type
           , vs : Optional vsType
           , additionalEnv : Optional (List { name : Text, value : Text })
           }
       , default =
-        { resources = container/resources.default
+        { resources = None container/resources.Type
         , vs = None vsType
         , additionalEnv = None (List { name : Text, value : Text })
         }

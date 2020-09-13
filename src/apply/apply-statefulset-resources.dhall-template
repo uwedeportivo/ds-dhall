@@ -9,20 +9,30 @@ let applyResources{{.Identifier}}
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
       λ(overlay : overlaySchema.Type) →
-        let baseResources =
-              base.{{.Component}}.StatefulSet.{{.Name}}.spec.template.spec.containers.{{.ContainerName}}.resources
 
-        let overlayResources =
+        let optionalOverlayResources =
               overlay.{{.Component}}.StatefulSet.{{.Name}}.containers.{{.ContainerName}}.resources
 
-        let finalResources =
-              resourceCombinator.overlayMerge
-                baseResources
-                overlayResources
+        let resultBase =
+            merge {
+                None = base
+                , Some = λ(overlayResources : resourceCombinator.Type) →
+                           let baseResources =
+                                 base.{{.Component}}.StatefulSet.{{.Name}}.spec.template.spec.containers.{{.ContainerName}}.resources
 
-        in  base
-          with {{.Component}}.StatefulSet.{{.Name}}.spec.template.spec.containers.{{.ContainerName}}.resources =
-              finalResources
+                           let finalResources =
+                                 resourceCombinator.overlayMerge
+                                   baseResources
+                                   overlayResources
+
+                           in  base
+                             with {{.Component}}.StatefulSet.{{.Name}}.spec.template.spec.containers.{{.ContainerName}}.resources =
+                                 finalResources
+            }
+            optionalOverlayResources
+
+        in resultBase
+
 {{end}}
 
 let applyAll

@@ -10,126 +10,181 @@ let applyResourcesf0
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
       λ(overlay : overlaySchema.Type) →
-        let baseResources =
-              base.Grafana.StatefulSet.grafana.spec.template.spec.containers.grafana.resources
+        let optionalOverlayResources =
+              overlay.Gitserver.StatefulSet.gitserver.containers.gitserver.resources
 
-        let overlayResources =
-              overlay.Grafana.StatefulSet.grafana.containers.grafana.resources
+        let resultBase =
+              merge
+                { None = base
+                , Some =
+                    λ(overlayResources : resourceCombinator.Type) →
+                      let baseResources =
+                            base.Gitserver.StatefulSet.gitserver.spec.template.spec.containers.gitserver.resources
 
-        let finalResources =
-              resourceCombinator.overlayMerge baseResources overlayResources
+                      let finalResources =
+                            resourceCombinator.overlayMerge
+                              baseResources
+                              overlayResources
 
-        in  base
-          with   Grafana
-               . StatefulSet
-               . grafana
-               . spec
-               . template
-               . spec
-               . containers
-               . grafana
-               . resources
-               = finalResources
+                      in  base
+                        with   Gitserver
+                             . StatefulSet
+                             . gitserver
+                             . spec
+                             . template
+                             . spec
+                             . containers
+                             . gitserver
+                             . resources
+                             = finalResources
+                }
+                optionalOverlayResources
+
+        in  resultBase
 
 let applyResourcesf1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
       λ(overlay : overlaySchema.Type) →
-        let baseResources =
-              base.Gitserver.StatefulSet.gitserver.spec.template.spec.containers.gitserver.resources
+        let optionalOverlayResources =
+              overlay.Gitserver.StatefulSet.gitserver.containers.jaeger-agent.resources
 
-        let overlayResources =
-              overlay.Gitserver.StatefulSet.gitserver.containers.gitserver.resources
+        let resultBase =
+              merge
+                { None = base
+                , Some =
+                    λ(overlayResources : resourceCombinator.Type) →
+                      let baseResources =
+                            base.Gitserver.StatefulSet.gitserver.spec.template.spec.containers.jaeger-agent.resources
 
-        let finalResources =
-              resourceCombinator.overlayMerge baseResources overlayResources
+                      let finalResources =
+                            resourceCombinator.overlayMerge
+                              baseResources
+                              overlayResources
 
-        in  base
-          with   Gitserver
-               . StatefulSet
-               . gitserver
-               . spec
-               . template
-               . spec
-               . containers
-               . gitserver
-               . resources
-               = finalResources
+                      in  base
+                        with   Gitserver
+                             . StatefulSet
+                             . gitserver
+                             . spec
+                             . template
+                             . spec
+                             . containers
+                             . jaeger-agent
+                             . resources
+                             = finalResources
+                }
+                optionalOverlayResources
+
+        in  resultBase
 
 let applyResourcesf2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
       λ(overlay : overlaySchema.Type) →
-        let baseResources =
-              base.Gitserver.StatefulSet.gitserver.spec.template.spec.containers.jaeger-agent.resources
+        let optionalOverlayResources =
+              overlay.Grafana.StatefulSet.grafana.containers.grafana.resources
 
-        let overlayResources =
-              overlay.Gitserver.StatefulSet.gitserver.containers.jaeger-agent.resources
+        let resultBase =
+              merge
+                { None = base
+                , Some =
+                    λ(overlayResources : resourceCombinator.Type) →
+                      let baseResources =
+                            base.Grafana.StatefulSet.grafana.spec.template.spec.containers.grafana.resources
 
-        let finalResources =
-              resourceCombinator.overlayMerge baseResources overlayResources
+                      let finalResources =
+                            resourceCombinator.overlayMerge
+                              baseResources
+                              overlayResources
 
-        in  base
-          with   Gitserver
-               . StatefulSet
-               . gitserver
-               . spec
-               . template
-               . spec
-               . containers
-               . jaeger-agent
-               . resources
-               = finalResources
+                      in  base
+                        with   Grafana
+                             . StatefulSet
+                             . grafana
+                             . spec
+                             . template
+                             . spec
+                             . containers
+                             . grafana
+                             . resources
+                             = finalResources
+                }
+                optionalOverlayResources
+
+        in  resultBase
 
 let applyResourcesf3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
       λ(overlay : overlaySchema.Type) →
-        let baseResources =
-              base.Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-indexserver.resources
+        let optionalOverlayResources =
+              overlay.Indexed-Search.StatefulSet.indexed-search.containers.zoekt-webserver.resources
 
-        let overlayResources =
-              overlay.Indexed-Search.StatefulSet.indexed-search.containers.zoekt-indexserver.resources
+        let resultBase =
+              merge
+                { None = base
+                , Some =
+                    λ(overlayResources : resourceCombinator.Type) →
+                      let baseResources =
+                            base.Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-webserver.resources
 
-        let finalResources =
-              resourceCombinator.overlayMerge baseResources overlayResources
+                      let finalResources =
+                            resourceCombinator.overlayMerge
+                              baseResources
+                              overlayResources
 
-        in  base
-          with   Indexed-Search
-               . StatefulSet
-               . indexed-search
-               . spec
-               . template
-               . spec
-               . containers
-               . zoekt-indexserver
-               . resources
-               = finalResources
+                      in  base
+                        with   Indexed-Search
+                             . StatefulSet
+                             . indexed-search
+                             . spec
+                             . template
+                             . spec
+                             . containers
+                             . zoekt-webserver
+                             . resources
+                             = finalResources
+                }
+                optionalOverlayResources
+
+        in  resultBase
 
 let applyResourcesf4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
     = λ(base : baseSchema.Type) →
       λ(overlay : overlaySchema.Type) →
-        let baseResources =
-              base.Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-webserver.resources
+        let optionalOverlayResources =
+              overlay.Indexed-Search.StatefulSet.indexed-search.containers.zoekt-indexserver.resources
 
-        let overlayResources =
-              overlay.Indexed-Search.StatefulSet.indexed-search.containers.zoekt-webserver.resources
+        let resultBase =
+              merge
+                { None = base
+                , Some =
+                    λ(overlayResources : resourceCombinator.Type) →
+                      let baseResources =
+                            base.Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-indexserver.resources
 
-        let finalResources =
-              resourceCombinator.overlayMerge baseResources overlayResources
+                      let finalResources =
+                            resourceCombinator.overlayMerge
+                              baseResources
+                              overlayResources
 
-        in  base
-          with   Indexed-Search
-               . StatefulSet
-               . indexed-search
-               . spec
-               . template
-               . spec
-               . containers
-               . zoekt-webserver
-               . resources
-               = finalResources
+                      in  base
+                        with   Indexed-Search
+                             . StatefulSet
+                             . indexed-search
+                             . spec
+                             . template
+                             . spec
+                             . containers
+                             . zoekt-indexserver
+                             . resources
+                             = finalResources
+                }
+                optionalOverlayResources
+
+        in  resultBase
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
