@@ -21,8 +21,16 @@ let applyImagef0
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Grafana.StatefulSet.grafana.spec.template.spec.containers.grafana.image =
-              finalImage
+          with   Grafana
+               . StatefulSet
+               . grafana
+               . spec
+               . template
+               . spec
+               . containers
+               . grafana
+               . image
+               = finalImage
 
 let applyImagef1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -39,8 +47,16 @@ let applyImagef1
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Gitserver.StatefulSet.gitserver.spec.template.spec.containers.gitserver.image =
-              finalImage
+          with   Gitserver
+               . StatefulSet
+               . gitserver
+               . spec
+               . template
+               . spec
+               . containers
+               . gitserver
+               . image
+               = finalImage
 
 let applyImagef2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -57,8 +73,16 @@ let applyImagef2
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Gitserver.StatefulSet.gitserver.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Gitserver
+               . StatefulSet
+               . gitserver
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -75,8 +99,16 @@ let applyImagef3
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-indexserver.image =
-              finalImage
+          with   Indexed-Search
+               . StatefulSet
+               . indexed-search
+               . spec
+               . template
+               . spec
+               . containers
+               . zoekt-indexserver
+               . image
+               = finalImage
 
 let applyImagef4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -93,8 +125,16 @@ let applyImagef4
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-webserver.image =
-              finalImage
+          with   Indexed-Search
+               . StatefulSet
+               . indexed-search
+               . spec
+               . template
+               . spec
+               . containers
+               . zoekt-webserver
+               . image
+               = finalImage
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type

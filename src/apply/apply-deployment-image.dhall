@@ -21,8 +21,16 @@ let applyImagef0
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-bundle-manager.spec.template.spec.containers.precise-code-intel-bundle-manager.image =
-              finalImage
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-bundle-manager
+               . spec
+               . template
+               . spec
+               . containers
+               . precise-code-intel-bundle-manager
+               . image
+               = finalImage
 
 let applyImagef1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -39,8 +47,16 @@ let applyImagef1
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Precise-Code-Intel.Deployment.precise-code-intel-worker.spec.template.spec.containers.precise-code-intel-worker.image =
-              finalImage
+          with   Precise-Code-Intel
+               . Deployment
+               . precise-code-intel-worker
+               . spec
+               . template
+               . spec
+               . containers
+               . precise-code-intel-worker
+               . image
+               = finalImage
 
 let applyImagef2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -57,8 +73,16 @@ let applyImagef2
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Redis.Deployment.redis-cache.spec.template.spec.containers.redis-cache.image =
-              finalImage
+          with   Redis
+               . Deployment
+               . redis-cache
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-cache
+               . image
+               = finalImage
 
 let applyImagef3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -75,8 +99,16 @@ let applyImagef3
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Redis.Deployment.redis-cache.spec.template.spec.containers.redis-exporter.image =
-              finalImage
+          with   Redis
+               . Deployment
+               . redis-cache
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-exporter
+               . image
+               = finalImage
 
 let applyImagef4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -93,8 +125,16 @@ let applyImagef4
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Redis.Deployment.redis-store.spec.template.spec.containers.redis-store.image =
-              finalImage
+          with   Redis
+               . Deployment
+               . redis-store
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-store
+               . image
+               = finalImage
 
 let applyImagef5
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -111,8 +151,16 @@ let applyImagef5
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Redis.Deployment.redis-store.spec.template.spec.containers.redis-exporter.image =
-              finalImage
+          with   Redis
+               . Deployment
+               . redis-store
+               . spec
+               . template
+               . spec
+               . containers
+               . redis-exporter
+               . image
+               = finalImage
 
 let applyImagef6
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -129,8 +177,16 @@ let applyImagef6
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Syntect-Server.Deployment.syntect-server.spec.template.spec.containers.syntect-server.image =
-              finalImage
+          with   Syntect-Server
+               . Deployment
+               . syntect-server
+               . spec
+               . template
+               . spec
+               . containers
+               . syntect-server
+               . image
+               = finalImage
 
 let applyImagef7
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -146,8 +202,16 @@ let applyImagef7
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Jaeger.Deployment.jaeger.spec.template.spec.containers.jaeger.image =
-              finalImage
+          with   Jaeger
+               . Deployment
+               . jaeger
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger
+               . image
+               = finalImage
 
 let applyImagef8
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -164,8 +228,16 @@ let applyImagef8
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Searcher.Deployment.searcher.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Searcher
+               . Deployment
+               . searcher
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef9
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -182,8 +254,16 @@ let applyImagef9
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Searcher.Deployment.searcher.spec.template.spec.containers.searcher.image =
-              finalImage
+          with   Searcher
+               . Deployment
+               . searcher
+               . spec
+               . template
+               . spec
+               . containers
+               . searcher
+               . image
+               = finalImage
 
 let applyImagef10
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -200,8 +280,16 @@ let applyImagef10
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Query-Runner.Deployment.query-runner.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Query-Runner
+               . Deployment
+               . query-runner
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef11
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -218,8 +306,16 @@ let applyImagef11
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Query-Runner.Deployment.query-runner.spec.template.spec.containers.query-runner.image =
-              finalImage
+          with   Query-Runner
+               . Deployment
+               . query-runner
+               . spec
+               . template
+               . spec
+               . containers
+               . query-runner
+               . image
+               = finalImage
 
 let applyImagef12
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -236,8 +332,16 @@ let applyImagef12
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Repo-Updater
+               . Deployment
+               . repo-updater
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef13
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -254,8 +358,16 @@ let applyImagef13
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Repo-Updater.Deployment.repo-updater.spec.template.spec.containers.repo-updater.image =
-              finalImage
+          with   Repo-Updater
+               . Deployment
+               . repo-updater
+               . spec
+               . template
+               . spec
+               . containers
+               . repo-updater
+               . image
+               = finalImage
 
 let applyImagef14
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -272,8 +384,16 @@ let applyImagef14
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.spec.template.spec.containers.github-proxy.image =
-              finalImage
+          with   Github-Proxy
+               . Deployment
+               . github-proxy
+               . spec
+               . template
+               . spec
+               . containers
+               . github-proxy
+               . image
+               = finalImage
 
 let applyImagef15
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -290,8 +410,16 @@ let applyImagef15
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Github-Proxy.Deployment.github-proxy.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Github-Proxy
+               . Deployment
+               . github-proxy
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef16
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -307,8 +435,8 @@ let applyImagef16
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql.image =
-              finalImage
+          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql.image
+               = finalImage
 
 let applyImagef17
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -325,8 +453,16 @@ let applyImagef17
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Pgsql.Deployment.pgsql.spec.template.spec.containers.pgsql-exporter.image =
-              finalImage
+          with   Pgsql
+               . Deployment
+               . pgsql
+               . spec
+               . template
+               . spec
+               . containers
+               . pgsql-exporter
+               . image
+               = finalImage
 
 let applyImagef18
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -343,8 +479,16 @@ let applyImagef18
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Prometheus.Deployment.prometheus.spec.template.spec.containers.prometheus.image =
-              finalImage
+          with   Prometheus
+               . Deployment
+               . prometheus
+               . spec
+               . template
+               . spec
+               . containers
+               . prometheus
+               . image
+               = finalImage
 
 let applyImagef19
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -361,8 +505,16 @@ let applyImagef19
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Symbols.Deployment.symbols.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Symbols
+               . Deployment
+               . symbols
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef20
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -378,8 +530,16 @@ let applyImagef20
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Symbols.Deployment.symbols.spec.template.spec.containers.symbols.image =
-              finalImage
+          with   Symbols
+               . Deployment
+               . symbols
+               . spec
+               . template
+               . spec
+               . containers
+               . symbols
+               . image
+               = finalImage
 
 let applyImagef21
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -396,8 +556,16 @@ let applyImagef21
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.spec.template.spec.containers.jaeger-agent.image =
-              finalImage
+          with   Frontend
+               . Deployment
+               . sourcegraph-frontend
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . image
+               = finalImage
 
 let applyImagef22
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -414,8 +582,16 @@ let applyImagef22
         let finalImage = overlayImage baseImage overlaySharedImageMods overlayVs
 
         in  base
-          with Frontend.Deployment.sourcegraph-frontend.spec.template.spec.containers.frontend.image =
-              finalImage
+          with   Frontend
+               . Deployment
+               . sourcegraph-frontend
+               . spec
+               . template
+               . spec
+               . containers
+               . frontend
+               . image
+               = finalImage
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type

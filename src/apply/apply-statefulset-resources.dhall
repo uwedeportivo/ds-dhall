@@ -20,8 +20,16 @@ let applyResourcesf0
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Grafana.StatefulSet.grafana.spec.template.spec.containers.grafana.resources =
-              finalResources
+          with   Grafana
+               . StatefulSet
+               . grafana
+               . spec
+               . template
+               . spec
+               . containers
+               . grafana
+               . resources
+               = finalResources
 
 let applyResourcesf1
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -37,8 +45,16 @@ let applyResourcesf1
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Gitserver.StatefulSet.gitserver.spec.template.spec.containers.gitserver.resources =
-              finalResources
+          with   Gitserver
+               . StatefulSet
+               . gitserver
+               . spec
+               . template
+               . spec
+               . containers
+               . gitserver
+               . resources
+               = finalResources
 
 let applyResourcesf2
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -54,8 +70,16 @@ let applyResourcesf2
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Gitserver.StatefulSet.gitserver.spec.template.spec.containers.jaeger-agent.resources =
-              finalResources
+          with   Gitserver
+               . StatefulSet
+               . gitserver
+               . spec
+               . template
+               . spec
+               . containers
+               . jaeger-agent
+               . resources
+               = finalResources
 
 let applyResourcesf3
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -71,8 +95,16 @@ let applyResourcesf3
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-indexserver.resources =
-              finalResources
+          with   Indexed-Search
+               . StatefulSet
+               . indexed-search
+               . spec
+               . template
+               . spec
+               . containers
+               . zoekt-indexserver
+               . resources
+               = finalResources
 
 let applyResourcesf4
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
@@ -88,8 +120,16 @@ let applyResourcesf4
               resourceCombinator.overlayMerge baseResources overlayResources
 
         in  base
-          with Indexed-Search.StatefulSet.indexed-search.spec.template.spec.containers.zoekt-webserver.resources =
-              finalResources
+          with   Indexed-Search
+               . StatefulSet
+               . indexed-search
+               . spec
+               . template
+               . spec
+               . containers
+               . zoekt-webserver
+               . resources
+               = finalResources
 
 let applyAll
     : baseSchema.Type → overlaySchema.Type → baseSchema.Type
